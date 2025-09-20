@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 align="center">Details Form</h1>
+    <h4 align="center">Department of Information</h4>
+    <form action="./submit.html" method="GET">
+        <fieldset>
+            <legend>FILLED BY CANDIDATE</legend>
+            <label for="name">FULL NAME</label>
+            <input type="text" id="name" name="fullname" required>
+
+            <label for="email">EMAIL</label>
+            <input type="text" id="email" name="email" required>
+
+            <label for="dob">DOB</label>
+            <input type="date" name="dob" id="dob">
+            <br>
+            <br>
+            <label for="gender">GENDER</label>
+            <select name="gender" id="gender">
+                <option value="">--Select Gender--</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Female</option>
+            </select>
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>CONTACT INFORMATION</legend>
+            <label for="phone">PHONE NUMBER</label>
+            <input type="tel" id="phone" name="phonenumber" placeholder="e.g., 9876543210" required>
+            <br>
+            <br>
+            <label for="address">FULL ADDRESS</label>
+            <br>
+            <textarea id="address" name="address" rows="4" cols="50" required></textarea>
+            <br>
+            <br>
+            <label for="country">COUNTRY</label>
+            <input type="text" id="country" name="country" required>
+        </fieldset>
+
+        <br>
+        <fieldset>
+            <legend>EDUCATIONAL BACKGROUND</legend>
+            <label for="highest-qualification">HIGHEST QUALIFICATION</label>
+            <input type="text" id="highest-qualification" name="highest-qualification" required>
+            <br>
+            <br>
+            <label for="institution">INSTITUTION NAME</label>
+            <input type="text" id="institution" name="institution" required>
+            <br>
+            <br>
+            <label for="year-of-passing">YEAR OF PASSING</label>
+            <input type="text" id="year-of-passing" name="year-of-passing" required>
+            <br>
+            <br>
+            <label>STREAM</label>
+            <br>
+            <input type="radio" id="CSE" name="stream" value="CSE">
+            <label for="CSE">CSE</label><br>
+            <input type="radio" id="AI" name="stream" value="AI">
+            <label for="AI">AI</label><br>
+            <input type="radio" id="ECE" name="stream" value="ECE">
+            <label for="ECE">ECE</label><br>
+            <input type="radio" id="MECH" name="stream" value="MECH">
+            <label for="MECH">MECH</label><br>
+            <input type="radio" id="CIVIL" name="stream" value="CIVIL">
+            <label for="CIVIL">CIVIL</label><br>
+            <input type="radio" id="OTHER" name="stream" value="OTHER">
+            <label for="OTHER">OTHER</label><br>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>OTHER INFORMATION</legend>
+            <label>HOBBIES (SELECT ALL THAT APPLY)</label><br>
+            <input type="checkbox" name="hobbies" id="reading" value="reading">
+            <label for="reading">Reading</label><br>
+            <input type="checkbox" name="hobbies" id="traveling" value="traveling">
+            <label for="traveling">Traveling</label><br>
+            <input type="checkbox" name="hobbies" id="sports" value="sports">
+            <label for="sports">Sports</label><br>
+            <input type="checkbox" name="hobbies" id="music" value="music">
+            <label for="music">Music</label><br>
+            <br>
+            <br>
+            <label for="photo">UPLOAD PHOTO</label>
+            <input type="file" id="photo" name="photo">
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>AGREEMENT</legend>
+            <input type="checkbox" id="agreement" name="agreement" required>
+            <label for="agreement">I agree to the terms and conditions</label>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>SUBMISSION</legend>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </fieldset>
+        
+    </form>
+</body>
+
+</html>
