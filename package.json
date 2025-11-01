@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/leviackerman007/WEB-HTML/issues"
   },
-  "homepage": "https://github.com/leviackerman007/WEB-HTML#readme"
+  "homepage": "https://github.com/leviackerman007/WEB-HTML#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
