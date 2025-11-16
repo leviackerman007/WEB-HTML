@@ -30,7 +30,7 @@ const product=[
 // })
 
 app.get('/search/:id',(req,res)=>{
-    const id=req.params.id;
+    const id=req.params.id;          //req.params =/2 (mandatory)
     if(id>product.length){
         return res.status(400).send(`Product id ${id} is not valid`)
     }else{
@@ -39,7 +39,7 @@ app.get('/search/:id',(req,res)=>{
 })
 
 app.get('/search',(req,res)=>{
-    const category=req.query.name;
+    const category=req.query.name;     //req.query =?id=1 (optional)
     if(category){
         const filteredProducts=product.filter(product=>product.name==category);
         if(filteredProducts.length>0){
