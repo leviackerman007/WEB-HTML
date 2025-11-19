@@ -49,10 +49,52 @@ const server = http.createServer((req,res)=>{
             }
         })
     }
+    else{
+        res.writeHead(404,{'Content-Type':'text/html'});
+        res.end('<h1>Page not found</h1>');
+    }
 });
-
 
 
 server.listen(3000,()=>{
     console.log('Server is running on http://localhost:3000');
 });
+
+// const fs=require('fs')
+
+// fs.writeFile("./testing1.txt","This is for testing",(err)=>{
+//     if(err) throw err
+//     console.log("File has been created")
+// })
+
+// fs.readFile("./testing1.txt","utf-8",(err,data)=>{
+//     if(err) throw err
+//     console.log(data)
+// })
+
+// fs.appendFile('./testing1.txt',"\nthis is new line",(err)=>{
+//     if(err) throw err
+//     console.log("File updated")
+// })
+
+// fs.unlink("./testing1.txt",(err)=>{
+//     if(err) throw err
+//     console.log("File deleted")
+// })
+
+
+// const http=require("http")
+// const server=http.createServer((req,res)=>{
+//     if(req.url==="/" && req.method==='GET'){
+//         res.writeHead(200,{"Content-Type":"text/html"})
+//         res.end("<h1>Welcome to home page</h1>")
+//     }
+//     else if(req.url==="/product" && req.method==='POST'){
+//         res.writeHead(200,{"Content-Type":"text/html"})
+//         res.end("<h1>Welcome to product page</h1>")
+//     }
+// })
+
+// server.listen(3000,()=>{
+//     console.log('Server is running on http://localhost:3000');
+// });
