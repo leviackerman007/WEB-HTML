@@ -1,2 +1,0 @@
-5v46Kvu8gQ7uwZWY
-mongodb+srv://iamtusharlevi_db_user:5v46Kvu8gQ7uwZWY@cluster0.y8t1fe9.mongodb.net/?appName=Cluster0
