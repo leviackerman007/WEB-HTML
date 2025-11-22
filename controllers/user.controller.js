@@ -4,3 +4,24 @@ export const allUsers=(req,res)=>{
 export const oneUser=(req,res)=>{
     res.send("One user")
 }
+
+async(req,res)=>{
+    const {name,rollNumber,className}=req.body
+    const user=await User.insertOne({
+        name:name,
+        rollNumber:rollNumber,
+        class:className
+    })
+    res.send({message:"User created",user})
+}
+
+async (req,res)=>{
+    const users=await User.find()
+    res.json(users)
+}
+
+async (req,res)=>{
+    const {id}=req.params
+    const user=await User.find({_id:id})
+    res.status(200).json(user)
+}

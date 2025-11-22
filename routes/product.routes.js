@@ -1,35 +1,16 @@
 import {Router} from "express"
+import {Product} from "../models/product.model.js"
 import {User} from "../models/user.model.js"
+import {createProduct,getAllProducts,getProductbyId,getProductbyCategory} from "../controllers/product.controller.js"
+import { get } from "mongoose"
 const router=Router()
 
-router.get("/products",async (req,res)=>{
-    const users=await User.find()
-    res.json(users)
-})
+router.get("/products",getAllProducts)
 
-router.get("/products/:id",async (req,res)=>{
-    const {id}=req.params
-    const user=await User.find({_id:id})
-    res.status(200).json(user)
-})
+router.get("/products/:id",getProductbyId)
 
-router.post("/products",async (req,res)=>{
-    const user=await User.insertOne({
-        name:"Test User",
-        rollNumber:123,
-        class:"10"
-    })
-    res.send(user)
-})
+router.get("/products/:category",getProductbyCategory)
 
-router.post("/products/insertone",async(req,res)=>{
-    const {name,rollNumber,className}=req.body
-    const user=await User.insertOne({
-        name:name,
-        rollNumber:rollNumber,
-        class:className
-    })
-    res.send({message:"User created",user})
-})
+router.post("/products/insertone",createProduct)
 
 export default router;
