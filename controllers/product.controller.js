@@ -1,4 +1,4 @@
-import { Product } from "../models/product.model"
+import { Product } from "../models/product.model.js"
 
 export const getAllProducts=async(req,res)=>{
     const products=await Product.find()
@@ -18,11 +18,11 @@ export const getProductbyId=async(req,res)=>{
 }
 
 export const createProduct=async(req,res)=>{
-    const {ProductName,Price,Catefory}=req.body
+    const {ProductName,Price,Category}=req.body
     const newProduct= await Product.insertOne({
         ProductName:ProductName,
         Price:Price,
-        Category:Catefory
+        Category:Category
     })
     res.status(201).json({message:"Product created",product:newProduct})
 }
