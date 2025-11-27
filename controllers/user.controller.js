@@ -5,15 +5,15 @@ export const oneUser=(req,res)=>{
     res.send("One user")
 }
 
-// async(req,res)=>{
-//     const {name,rollNumber,className}=req.body
-//     const user=await User.insertOne({
-//         name:name,
-//         rollNumber:rollNumber,
-//         class:className
-//     })
-//     res.send({message:"User created",user})
-// }
+export const createUser=async (req,res)=>{
+    const {username,email,password}=req.body
+    const user=await User.insertOne({
+        username:username,
+        email:email,
+        password:password
+    })
+    res.send({message:"User created",user})
+}
 
 // async (req,res)=>{
 //     const users=await User.find()
