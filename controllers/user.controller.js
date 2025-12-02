@@ -6,13 +6,13 @@ export const allUsers=async(req,res)=>{
     if(country){
         filter.country=country
     }
-    const sortOrder=order=="desc" ? -1 : 1
+    const sortOrder=order==="desc" ? -1 : 1
     const users=await User.find(filter).skip((page-1)*limit).limit(Number(limit)).sort({[sortBy]:sortOrder})
-    res.json(users)
+    
+    const total=await User.countDocuments(filter)
+    res.json({total,page,limit,users})
 }
-export const oneUser=(req,res)=>{
-    res.send("One user")
-}
+
 
 export const createUser=async (req,res)=>{
     const {name,city,age,country}=req.body
@@ -26,17 +26,14 @@ export const createUser=async (req,res)=>{
 }
 
 export const getUser=async(req,res)=>{
-    const city=req.query.city
-    const name=req.query.name
-    const age=req.query.age
-    const country=req.query.country
-    const users=await User.find({
-        $or:[
-        {name:name},
-        {city:city},
-        {age:age},
-        {country:country}]
-    })
+    const filter={}
+    const {name,city,age,country}=req.query
+    if(name) filter.name=name
+    if(city) filter.city=city
+    if(age) filter.age=age
+    if(country) filter.country=country
+
+    const users=await User.find(filter)
     res.json(users)
 }
 
@@ -70,6 +67,6 @@ export const deleteUserById=async(req,res)=>{
     if(!deletedUser){
         return res.status(404).json({message:'User not found'})
     }
-    res.json(deletedUser)
+    res.json({message:"User deleted successfully",deletedUser})
 }
     
