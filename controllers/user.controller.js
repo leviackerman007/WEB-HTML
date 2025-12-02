@@ -1,7 +1,14 @@
 import { User } from "../models/user.model"
 
-export const allUsers=(req,res)=>{
-    res.send("All users")
+export const allUsers=async(req,res)=>{
+    const {page=1,limit=10,country,sortBy="name",order="asc"}=req.query
+    const filter={}
+    if(country){
+        filter.country=country
+    }
+    const sortOrder=order=="desc" ? -1 : 1
+    const users=await User.find(filter).skip((page-1)*limit).limit(Number(limit)).sort({[sortBy]:sortOrder})
+    res.json(users)
 }
 export const oneUser=(req,res)=>{
     res.send("One user")
