@@ -137,6 +137,7 @@ app.get('/product/:id',(req,res)=>{
     }
 })
 
+http://localhost:3000/product?change=Laptop
 app.get('/product',(res,req)=>{
     const change=req.query.change
     if(change){

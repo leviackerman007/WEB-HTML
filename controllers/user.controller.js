@@ -1,4 +1,4 @@
-import { User } from "../models/user.model"
+import { User } from "../models/user.model.js"
 
 export const allUsers=async(req,res)=>{
     const {page=1,limit=10,country,sortBy="name",order="asc"}=req.query
