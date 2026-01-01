@@ -31,10 +31,35 @@ import { useState } from 'react'
 //   },
 // ]
 
+function CalcButton({label,onClick,variant='default'}){
+  return(
+    <button onClick={onClick} style={{
+      width:"50px",
+      height:"50px",
+      margin:"5px",
+      borderRadius:"20px",
+      fontSize:"14px",
+      backgroundColor:"#4b5563",
+      color:"white",
+      cursor:"pointer"
+    }}>
+      {label}
+    </button>
+  );
+}
+
+const rows=[
+  ["C","<-"],
+  [7,8,9,"*"],
+  [4,5,6,"-"],
+  [1,2,3,"+"],
+  [".",0,"/","="]
+];
+
 function App() {
   const [display,setDisplay]=useState('0')
   const handleClick=(value)=>{
-    if(display=='0'){
+    if(display==='0'){
       return setDisplay(value.toString())
     }
     setDisplay(display+value)
@@ -54,7 +79,7 @@ function App() {
 
   const handleEquals=()=>{
     try{
-      const result=eval(display)
+      const result=Function(`return ${display}`)();
       setDisplay(result.toString())
     }catch{
       setDisplay('Error')
@@ -63,49 +88,43 @@ function App() {
 
 return(
    <>
-    <div style={{textAlign:'center',marginTop:'50px'}}>
+    <div style={{
+      textAlign:'center',marginTop:'50px'}}>
 
-    <h1>Calculator</h1>
+    <h1>Calculator Pro Max 😎</h1>
        <div style={{
          display:'inline-block',
          padding:'20px',
          backgroundColor:"#313235ff",
          borderRadius:'10px',
-         boxShadow:"0 4px 10 px rgba(0,0,0,0.2)",
+         boxShadow:"0 4px 10px rgba(0,0,0,0.2)",
          textAlign:'center',
          color:'white'
         }}>
-          <h2 style={{marginBottom:"20px"}}>{display}</h2>
-          <div style={{marginBottom:'10px'}}>
-          <button onClick={() => handleClear()}>C</button>
-          <button onClick={() => handleDelete()}>{`<-`}</button>
+        <h2 style={{
+          marginBottom:"20px",
+          padding:"10px",
+          backgroundColor:"#1e1e1eff",
+          borderRadius:"5px",
+          minWidth:"100px",
+          textAlign:"right",
+          fontSize:"24px",
+          }}>{display}</h2>
+        
+        {rows.map((row,i)=>(
+          <div key={i}>
+            {row.map((label)=>(
+              <CalcButton key={label} label={label} onClick={()=>{
+                if (label==='C') return handleClear();
+                if (label==='<-') return handleDelete();
+                if (label==='=') return handleEquals();
+                handleClick(label);
+              }}
+              />
+            ))}
           </div>
-          <div style={{marginBottom:'10px'}}>
-          <button onClick={() => handleClick(7)}>7</button>
-          <button onClick={() => handleClick(8)}>8</button>
-          <button onClick={() => handleClick(9)}>9</button>
-          <button onClick={() => handleClick('x')}>x</button>
-          </div>
-          <div style={{marginBottom:'10px'}}>
-          <button onClick={() => handleClick(4)}>4</button>
-          <button onClick={() => handleClick(5)}>5</button>
-          <button onClick={() => handleClick(6)}>6</button>
-          <button onClick={() => handleClick('-')}>-</button>
-          </div>
-          <div style={{marginBottom:'10px'}}>
-          <button onClick={() => handleClick(1)}>1</button>
-          <button onClick={() => handleClick(2)}>2</button>
-          <button onClick={() => handleClick(3)}>3</button>
-          <button onClick={() => handleClick('+')}>+</button>
-          </div>
-
-          <div>
-          <button onClick={() => handleClick('.')}>.</button>
-          <button onClick={() => handleClick(0)}>0</button>
-          <button onClick={() => handleClick('/')}>/</button>
-          <button onClick={() => handleEquals()}>{'='}</button>
-          </div>
-
+        ))
+        }
        </div>
     </div>
 
